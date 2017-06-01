@@ -5,13 +5,13 @@ class API::V1::AnimalsController < ApplicationController
   # GET /animals.json
   def index
     @animals = Animal.all
-    render json: @animals
+    render json: @animals if stale?(etag: @animals.all, last_modified: @animals.maximum(:updated_at))
   end
 
   # GET /animals/1
   # GET /animals/1.json
   def show
-  	render json: @animal
+  	render json: @animal if stale?(@animal)
   end
 
   # POST /animals
