@@ -1,4 +1,4 @@
-class API::V1::AnimalsController < ApplicationController
+class Api::V1::AnimalsController < ApplicationController
 	before_action :set_animal, only: [:show, :update, :destroy]
 
   # GET /animals
